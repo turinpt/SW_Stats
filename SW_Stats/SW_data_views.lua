@@ -608,6 +608,7 @@ function SW_DoUnitMouseOver(b)
 	GameTooltip:AddLine(SW_TT_UNIT_OUT);
 	GameTooltip:AddLine(string.format(SW_TT_UNIT_DMGHEAL, unitData:getDmgDone(), unitData:getEffectiveHealDone(), unitData:getRawHealDone(), unitData:getOHInFPercentDone()));
 	GameTooltip:AddLine(string.format(SW_TT_UNIT_CRIT, unitData:getDmgCrit(), unitData:getHealCrit()));
+	GameTooltip:AddLine("Spells Resisted: "..unitData:getResists().."%  Partially Resisted: "..unitData:getPartialResists());
 	GameTooltip:AddLine(" ");
 	GameTooltip:AddLine(SW_TT_UNIT_IN);
 	GameTooltip:AddLine(string.format(SW_TT_UNIT_DMGHEAL, unitData:getDmgRecieved(), unitData:getEffectiveHealRecieved(), unitData:getRawHealRecieved(), unitData:getOHInFPercentRecieved()));

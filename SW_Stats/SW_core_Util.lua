@@ -1912,6 +1912,36 @@ SW_C_UnitData = {
 			return 0;
 		end
 	end,
+	getResists = function (self)
+		if not (self and self[1]) then return 0; end
+		local hits = 0
+		local resists = 0;
+
+		for k,v in pairs(self[1][3]) do
+			if v[1] and v[1][3] and v[4] and v[4][2] then
+				hits = hits + v[1][3] + v[4][2];
+				resists = resists + v[4][2];
+			end
+		end
+
+		if hits > 0 and resists > 0 then
+			return math.floor((resists / hits) * 1000 + 0.5) / 10;
+		else
+			return 0;
+		end
+	end,
+	getPartialResists = function (self)
+		if not (self and self[1]) then return 0; end
+		local resists = 0;
+
+		for k,v in pairs(self[1][3]) do
+			if v[5] and v[5][5] then
+				resists = resists + v[5][5];
+			end
+		end
+
+		return resists;
+	end,
 	getDPS = function (self)
 		if not self then return 0; end
 		local dmg = self:getDmgDone();

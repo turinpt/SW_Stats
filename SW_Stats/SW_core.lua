@@ -464,7 +464,7 @@ function SW_Stats_OnEvent()
 		
 		SW_Settings.LAST_V_RUN = SW_VERSION;
 		if (gcinfo()) - SW_MEM > SW_MEM_WARNING_THRESH then
-			StaticPopup_Show("SW_Mem_Warning");
+			DEFAULT_CHAT_FRAME:AddMessage(StaticPopupDialogs["SW_Mem_Warning"].text)
 		end
 	elseif (event == "PLAYER_TARGET_CHANGED") then
 		local unitName = UnitName("target");

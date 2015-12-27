@@ -1942,6 +1942,24 @@ SW_C_UnitData = {
 
 		return resists;
 	end,
+	getBoltHits = function(self)
+		if not (self and self[1]) then return; end
+		for k,v in pairs(self[1][3]) do 
+			if(SW_StrTable:getStr(k) == "Shadow Bolt") then
+				return self[1][3].getHits(v) + self[1][3].getResists(v)
+			end
+		end
+		return 0
+	end,
+	getCorruptionTicks = function(self)
+		if not (self and self[1]) then return; end
+		for k,v in pairs(self[1][3]) do 
+			if(SW_StrTable:getStr(k) == "Corruption") then
+				return self[1][3].getTicks(v)
+			end
+		end
+		return 0
+	end,
 	getDPS = function (self)
 		if not self then return 0; end
 		local dmg = self:getDmgDone();
@@ -1986,7 +2004,6 @@ SW_C_UnitData = {
 			return 0;
 		end
 	end,
-	
 	getDmgRecieved = function (self)
 		if not self then return 0; end
 		if self[2] then
